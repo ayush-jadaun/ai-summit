@@ -84,34 +84,28 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .brand-logo {
-            font-size: 1.2rem;
-            font-weight: 900;
-            color: var(--primary-color);
-            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .mini-logos {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .mini-logo-box {
+        .logo-box {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--glass-border);
-            padding: 5px 12px;
-            font-size: 0.75rem;
+            padding: 8px 16px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
             border-radius: 4px;
-            color: var(--text-dim);
-            transition: 0.3s;
-        }
-        .mini-logo-box:hover {
-            border-color: var(--primary-color);
             color: #fff;
-            box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+            transition: 0.3s;
+            text-align: center;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 45px;
+        }
+
+        .logo-box:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+            color: var(--primary-color);
         }
 
         /* --- HERO SECTION --- */
@@ -122,7 +116,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 6rem 2rem 2rem;
+            padding: 8rem 2rem 4rem; /* Increased top padding for logo clearance */
             position: relative;
         }
 
@@ -251,6 +245,9 @@
             transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         .glass-card::before {
@@ -290,6 +287,7 @@
         .glass-card p {
             color: var(--text-dim);
             font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         /* --- FACULTY HIGHLIGHT --- */
@@ -298,6 +296,14 @@
             background: linear-gradient(90deg, rgba(124, 58, 237, 0.1) 0%, transparent 100%);
             padding: 2rem;
             border-radius: 0 12px 12px 0;
+            margin-top: 1rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--glass-border);
+            border-left-width: 4px;
+        }
+
+        .faculty-box p strong {
+            color: var(--primary-color);
         }
 
         /* --- SCHEDULE TABLE --- */
@@ -387,7 +393,12 @@
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
-            .top-logo-bar { flex-direction: column; gap: 1rem; }
+            .top-logo-bar { 
+                position: relative;
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 1rem;
+            }
             .schedule-row { flex-direction: column; gap: 0.5rem; }
             .time-cell { font-size: 0.9rem; opacity: 0.8; }
             section { padding: 4rem 5%; }
@@ -399,14 +410,19 @@
     <!-- Particle Canvas -->
     <canvas id="bg-canvas"></canvas>
 
-    <!-- Top Nav -->
+    <!-- Top Nav: Logos Restored to Original Layout -->
     <nav class="top-logo-bar">
-        <div class="brand-logo"><i class="fas fa-brain"></i> hAIVB-2026</div>
-        <div class="mini-logos">
-            <div class="mini-logo-box">MNNIT</div>
-            <div class="mini-logo-box">GOVT INDIA</div>
-            <div class="mini-logo-box">IT MINISTRY</div>
+        <!-- Left -->
+        <div class="logo-box">AI SUMMIT</div>
+        
+        <!-- Center Group -->
+        <div style="display: flex; gap: 2rem;">
+            <div class="logo-box">MNNIT</div>
+            <div class="logo-box">GOVT INDIA</div>
         </div>
+        
+        <!-- Right -->
+        <div class="logo-box">IT MINISTRY</div>
     </nav>
 
     <!-- Hero -->
@@ -425,52 +441,73 @@
         <a href="#register" class="btn-glow">Secure Your Spot</a>
     </section>
 
-    <!-- Target Participants -->
+    <!-- Target Participants: Content Restored -->
     <section id="participants">
         <div class="section-header">
             <span class="section-num">01</span>
-            <h2 class="section-title">Who Should Attend?</h2>
+            <h2 class="section-title">Target Participants</h2>
         </div>
         <div class="grid-container">
             <div class="glass-card">
-                <i class="fas fa-microchip"></i>
-                <h3>Tech Innovators</h3>
-                <p>Engineers, developers, and tech enthusiasts looking to shape the future infrastructure of AI in India.</p>
-            </div>
-            <div class="glass-card">
                 <i class="fas fa-user-graduate"></i>
-                <h3>Academia</h3>
-                <p>Faculty, Research Scholars, and Students aiming to bridge the gap between theoretical AI and practical application.</p>
+                <h3>Academic & Research</h3>
+                <p>Designed for PG Students, Research Scholars, and Faculty members interested in the cutting-edge developments of Artificial Intelligence.</p>
             </div>
             <div class="glass-card">
-                <i class="fas fa-briefcase"></i>
-                <h3>Industry Leaders</h3>
-                <p>Professionals seeking to leverage AI for business transformation and digital empowerment solutions.</p>
+                <i class="fas fa-building"></i>
+                <h3>Industry Professionals</h3>
+                <p>Industry persons interested in allied disciplines and the practical application of AI in building a digitally empowered India.</p>
             </div>
         </div>
     </section>
 
-    <!-- Outcomes -->
-    <section id="outcomes">
+    <!-- Faculty & Resource Persons: Restored -->
+    <section id="faculty">
         <div class="section-header">
             <span class="section-num">02</span>
-            <h2 class="section-title">Key Outcomes</h2>
+            <h2 class="section-title">Faculty & Resource Persons</h2>
+        </div>
+        <div class="faculty-box">
+            <p style="font-size: 1.1rem; margin-bottom: 1rem; color: #fff;">
+                The program consists of <strong>03 expository talks</strong> and <strong>01 hands-on training</strong> session (1.5 hours duration each).
+            </p>
+            <p style="color: var(--text-dim);">
+                Sessions will be delivered by distinguished Faculty from <strong>MNNIT</strong> and leading <strong>Industry Experts</strong>, followed by an interactive panel discussion.
+            </p>
+        </div>
+    </section>
+
+    <!-- Expected Outcomes: Content Restored (5 Cards) -->
+    <section id="outcomes">
+        <div class="section-header">
+            <span class="section-num">03</span>
+            <h2 class="section-title">Expected Outcomes</h2>
         </div>
         <div class="grid-container">
             <div class="glass-card">
-                <i class="fas fa-rocket"></i>
-                <h3>Innovation Launchpad</h3>
-                <p>Setting the stage for the main Impact Summit in New Delhi with actionable insights.</p>
+                <i class="fas fa-bullseye"></i>
+                <h3>Impact Summit Objectives</h3>
+                <p>Provide a significant contribution to the Impact Summit's objectives, setting the stage for the New Delhi event.</p>
             </div>
             <div class="glass-card">
-                <i class="fas fa-hands-helping"></i>
-                <h3>Social Good</h3>
-                <p>Exploring AI applications in rural healthcare, weather prediction, and disaster management.</p>
+                <i class="fas fa-globe-asia"></i>
+                <h3>Real-World Solutions</h3>
+                <p>Highlighting how AI solves real challenges, enhances public services, and makes opportunities accessible to every citizen.</p>
+            </div>
+            <div class="glass-card">
+                <i class="fas fa-heartbeat"></i>
+                <h3>Healthcare & Environment</h3>
+                <p>Exploring awareness on improving rural healthcare and predicting weather patterns using AI models.</p>
             </div>
             <div class="glass-card">
                 <i class="fas fa-language"></i>
-                <h3>Digital Inclusion</h3>
-                <p>Breaking language barriers with AI translation for court judgments and essential services.</p>
+                <h3>Regional Access</h3>
+                <p>Translating court judgments and critical data into regional languages to empower the informal workforce.</p>
+            </div>
+            <div class="glass-card">
+                <i class="fas fa-network-wired"></i>
+                <h3>Future Networking</h3>
+                <p>This workshop will continue the long-term network to shape the future of work, technology, and society.</p>
             </div>
         </div>
     </section>
@@ -478,52 +515,64 @@
     <!-- Schedule -->
     <section id="schedule">
         <div class="section-header">
-            <span class="section-num">03</span>
-            <h2 class="section-title">Event Timeline</h2>
+            <span class="section-num">04</span>
+            <h2 class="section-title">Tentative Schedule</h2>
         </div>
 
         <div class="schedule-wrapper">
             <div class="schedule-header">MORNING SESSIONS</div>
             <div class="schedule-row">
-                <div class="time-cell">08:00 - 09:00</div>
-                <div class="activity-cell">Registration & Networking</div>
+                <div class="time-cell">08.00 - 09.00</div>
+                <div class="activity-cell">Registration</div>
             </div>
             <div class="schedule-row">
-                <div class="time-cell">09:00 - 09:40</div>
+                <div class="time-cell">09.00 - 09.40</div>
                 <div class="activity-cell">Inaugural Ceremony</div>
             </div>
             <div class="schedule-row">
-                <div class="time-cell">10:00 - 11:30</div>
-                <div class="activity-cell"><strong>Keynote:</strong> The Era of Artificial Intelligence</div>
+                <div class="time-cell">09.40 - 10.00</div>
+                <div class="activity-cell">Tea Break</div>
             </div>
             <div class="schedule-row">
-                <div class="time-cell">11:30 - 13:00</div>
-                <div class="activity-cell"><strong>Talk:</strong> AI Competency Framework</div>
+                <div class="time-cell">10.00 - 11.30</div>
+                <div class="activity-cell"><strong>Talk #1:</strong> Introduction of Artificial Intelligence</div>
+            </div>
+            <div class="schedule-row">
+                <div class="time-cell">11.30 - 13.00</div>
+                <div class="activity-cell"><strong>Talk #2:</strong> AI Competency Framework</div>
             </div>
             <div class="schedule-row break-row">
-                <div class="time-cell">13:00 - 14:00</div>
-                <div class="activity-cell"><i class="fas fa-utensils"></i> Networking Lunch</div>
+                <div class="time-cell">13.00 - 14.00</div>
+                <div class="activity-cell"><strong>LUNCH BREAK</strong></div>
             </div>
             
-            <div class="schedule-header" style="border-top: 1px solid var(--glass-border);">AFTERNOON SESSIONS</div>
+            <div class="schedule-header" style="border-top: 1px solid var(--glass-border);">EVENING SESSIONS</div>
             <div class="schedule-row">
-                <div class="time-cell">14:00 - 15:30</div>
-                <div class="activity-cell"><strong>Tech Dive:</strong> Sarvam AI, Bhashini & BharatGen</div>
+                <div class="time-cell">14.00 - 15.30</div>
+                <div class="activity-cell"><strong>Talk #3:</strong> AI-driven future (Sarvam AI, Bhashini, BharatGen)</div>
             </div>
             <div class="schedule-row">
-                <div class="time-cell">15:30 - 17:00</div>
-                <div class="activity-cell"><strong>Workshop:</strong> Hands-on AI Training</div>
+                <div class="time-cell">15.30 - 17.00</div>
+                <div class="activity-cell"><strong>Hands-on Training</strong></div>
             </div>
             <div class="schedule-row">
-                <div class="time-cell">17:10 - 18:00</div>
-                <div class="activity-cell"><strong>Panel:</strong> Enhancing India AI Summit 2026 Impact</div>
+                <div class="time-cell">17.00 - 17.10</div>
+                <div class="activity-cell">Tea Break</div>
+            </div>
+            <div class="schedule-row">
+                <div class="time-cell">17.10 - 18.00</div>
+                <div class="activity-cell">Panel Discussion: Enhance India AI Summit 2026 Impact</div>
+            </div>
+            <div class="schedule-row">
+                <div class="time-cell">18.00 - 18.30</div>
+                <div class="activity-cell">Valedictory</div>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="footer-logo">hAIVB-2026</div>
-        <p>Motilal Nehru National Institute of Technology Allahabad</p>
+        <p>Motilal Nehru National Institute of Technology Allahabad, Prayagraj-211004</p>
         
         <div class="inst-grid">
             <span class="inst-chip">MNNIT</span>
@@ -531,9 +580,11 @@
             <span class="inst-chip">United University</span>
             <span class="inst-chip">UIT/UCER</span>
             <span class="inst-chip">SIET</span>
+            <span class="inst-chip">BBS</span>
+            <span class="inst-chip">IERT</span>
         </div>
 
-        <p style="color: #555; font-size: 0.8rem; margin-top: 2rem;">&copy; 2026 AI Summit Team. Engineered for Impact.</p>
+        <p style="color: #555; font-size: 0.8rem; margin-top: 2rem;">&copy; 2026 hAIVB Summit Team. All Rights Reserved.</p>
     </footer>
 
     <script>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hAIVB-2026 | AI Impact Pre-Summit</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #00f2ff; /* Neon Cyan */
+            --secondary-color: #0047ab; /* Deep Blue */
+            --bg-dark: #050a14;
+            --bg-card: rgba(16, 26, 48, 0.7);
+            --text-light: #e0f7fa;
+            --text-dim: #94a3b8;
+            --accent: #7c3aed; /* Purple Accent */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 242, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(124, 58, 237, 0.15) 0%, transparent 20%);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- LOGO BAR (ABSOLUTE TOP & SPREAD OUT) --- */
+        .top-logo-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between; /* Spreads logos out */
+            align-items: flex-start;
+            z-index: 100; /* On top of everything */
+        }
+
+        .logo-placeholder {
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0 15px;
+            border-radius: 4px;
+            color: #000;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            border: 1px solid var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+            text-align: center;
+        }
+        /* For real images use: .logo-img { height: 60px; width: auto; } */
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* Animated Background Glow */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.1) 0%, transparent 70%);
+            z-index: -1;
+            animation: pulse 4s infinite ease-in-out;
+        }
+
+        .hero h2 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem; /* Larger title */
+            background: linear-gradient(90deg, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+            max-width: 1100px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-dim);
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        .event-details-box {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .detail-item {
+            border: 1px solid var(--primary-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            background: rgba(0, 242, 255, 0.05);
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+        }
+
+        /* --- BUTTON STYLES --- */
+        .btn-register {
+            background: var(--primary-color);
+            color: #050a14;
+            padding: 14px 45px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            border: 2px solid var(--primary-color);
+            margin-top: 3rem;
+        }
+
+        .btn-register:hover {
+            background: transparent;
+            color: var(--primary-color);
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.6);
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        /* --- SECTIONS --- */
+        section {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            border-left: 5px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        /* --- GRID & CARDS --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        /* --- TABLE --- */
+        .schedule-container {
+            overflow-x: auto;
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        th {
+            color: var(--primary-color);
+            font-family: 'Orbitron', sans-serif;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .time-col {
+            color: var(--accent);
+            font-weight: bold;
+            width: 25%;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000;
+            padding: 3rem 10%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .institutions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            color: var(--text-dim);
+        }
+
+        .inst-tag {
+            background: rgba(255,255,255,0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.3; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            section { padding: 3rem 5%; }
+            .top-logo-bar { 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 1rem;
+                padding-top: 1rem;
+                position: relative; /* On mobile, let them stack normally so they don't cover text */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero" id="home">
+        
+        <div class="top-logo-bar">
+            <div class="logo-placeholder">AI SUMMIT</div>
+            
+            <div style="display: flex; gap: 2rem;">
+                <div class="logo-placeholder">MNNIT</div>
+                <div class="logo-placeholder">GOVT INDIA</div>
+            </div>
+            
+            <div class="logo-placeholder">IT MINISTRY</div>
+        </div>
+
+
+        <h2>A Pre-Summit Event for AI Impact Summit 2026</h2>
+        <h1>Harnessing AI for Inclusive Growth in Viksit Bharath 2047</h1>
+        <p>hAIVB-2026 | Focusing on AI Competency, Digital Empowerment, and Ethical AI Frameworks.</p>
+        
+        <div class="event-details-box">
+            <div class="detail-item"><i class="far fa-calendar-alt"></i> February 08, 2026</div>
+            <div class="detail-item"><i class="fas fa-map-marker-alt"></i> MNNIT Allahabad, Prayagraj</div>
+        </div>
+
+        <a href="https://forms.google.com/YOUR-LINK-HERE" target="_blank" class="btn-register">
+            <i class="fas fa-edit"></i> Register Now
+        </a>
+    </section>
+
+    <section id="participants">
+        <h2 class="section-title">01. Target Participants</h2>
+        <div class="grid-container">
+            <div class="card">
+                <i class="fas fa-user-graduate fa-2x" style="color: var(--primary-color); margin-bottom: 1rem;"></i>
+                <h3>Academic & Research</h3>
+                <p>Designed for PG Students, Research Scholars, and Faculty members interested in the cutting-edge developments of Artificial Intelligence.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-building fa-2x" style="color: var(--primary-color); margin-bottom: 1rem;"></i>
+                <h3>Industry Professionals</h3>
+                <p>Industry persons interested in allied disciplines and the practical application of AI in building a digitally empowered India.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="faculty">
+        <h2 class="section-title">02. Faculty & Resource Persons</h2>
+        <div class="card" style="border-left: 4px solid var(--accent);">
+            <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+                The program consists of <strong>03 expository talks</strong> and <strong>01 hands-on training</strong> session (1.5 hours duration each).
+            </p>
+            <p>
+                Sessions will be delivered by distinguished Faculty from <strong>MNNIT</strong> and leading <strong>Industry Experts</strong>, followed by an interactive panel discussion.
+            </p>
+        </div>
+    </section>
+
+    <section id="outcomes">
+        <h2 class="section-title">03. Expected Outcomes</h2>
+        <div class="grid-container">
+            <div class="card">
+                <h3><i class="fas fa-bullseye"></i> Impact Summit Objectives</h3>
+                <p>Provide a significant contribution to the Impact Summit's objectives, setting the stage for the New Delhi event.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-globe-asia"></i> Real-World Solutions</h3>
+                <p>Highlighting how AI solves real challenges, enhances public services, and makes opportunities accessible to every citizen.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-heartbeat"></i> Healthcare & Environment</h3>
+                <p>Exploring awareness on improving rural healthcare and predicting weather patterns using AI models.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-language"></i> Regional Access</h3>
+                <p>Translating court judgments and critical data into regional languages to empower the informal workforce.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-network-wired"></i> Future Networking</h3>
+                <p>This workshop will continue the long-term network to shape the future of work, technology, and society.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule">
+        <h2 class="section-title">04. Tentative Schedule</h2>
+        
+        <div class="schedule-container">
+            <h3>Morning Session</h3>
+            <table>
+                <tr>
+                    <th class="time-col">Time</th>
+                    <th>Activity</th>
+                </tr>
+                <tr>
+                    <td class="time-col">08.00 - 09.00</td>
+                    <td>Registration</td>
+                </tr>
+                <tr>
+                    <td class="time-col">09.00 - 09.40</td>
+                    <td>Inaugural Ceremony</td>
+                </tr>
+                <tr>
+                    <td class="time-col">09.40 - 10.00</td>
+                    <td>Tea Break</td>
+                </tr>
+                <tr>
+                    <td class="time-col">10.00 - 11.30</td>
+                    <td><strong>Talk #1:</strong> Introduction of Artificial Intelligence</td>
+                </tr>
+                <tr>
+                    <td class="time-col">11.30 - 13.00</td>
+                    <td><strong>Talk #2:</strong> AI Competency Framework</td>
+                </tr>
+                <tr style="background: rgba(124, 58, 237, 0.2);">
+                    <td class="time-col">13.00 - 14.00</td>
+                    <td><strong>LUNCH BREAK</strong></td>
+                </tr>
+            </table>
+
+            <h3 style="margin-top: 2rem;">Evening Session</h3>
+            <table>
+                <tr>
+                    <th class="time-col">Time</th>
+                    <th>Activity</th>
+                </tr>
+                <tr>
+                    <td class="time-col">14.00 - 15.30</td>
+                    <td><strong>Talk #3:</strong> AI-driven future (Sarvam AI, Bhashini, BharatGen)</td>
+                </tr>
+                <tr>
+                    <td class="time-col">15.30 - 17.00</td>
+                    <td><strong>Hands-on Training</strong></td>
+                </tr>
+                <tr>
+                    <td class="time-col">17.00 - 17.10</td>
+                    <td>Tea Break</td>
+                </tr>
+                <tr>
+                    <td class="time-col">17.10 - 18.00</td>
+                    <td>Panel Discussion: Enhance India AI Summit 2026 Impact</td>
+                </tr>
+                <tr>
+                    <td class="time-col">18.00 - 18.30</td>
+                    <td>Valedictory</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        <p>Motilal Nehru National Institute of Technology Allahabad, Prayagraj-211004</p>
+        <div style="margin: 1rem 0;">
+            <p style="color: var(--primary-color); font-size: 0.9rem;">PARTICIPATING INSTITUTIONS</p>
+            <div class="institutions">
+                <span class="inst-tag">MNNIT Allahabad</span>
+                <span class="inst-tag">Allahabad University</span>
+                <span class="inst-tag">United University</span>
+                <span class="inst-tag">UIT/UCER</span>
+                <span class="inst-tag">SIET</span>
+                <span class="inst-tag">BBS</span>
+                <span class="inst-tag">IERT</span>
+            </div>
+        </div>
+        <p style="margin-top: 2rem; color: #555; font-size: 0.8rem;">&copy; 2026 hAIVB Summit Team. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, tr, .hero h1, .section-title').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

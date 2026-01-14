@@ -390,16 +390,29 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
+            .hero { padding-top: 12rem; } /* Add padding for stacked logos */
             .hero h1 { font-size: 2.2rem; }
             .top-logo-bar { 
-                position: relative;
+                position: absolute; /* Keep it positioned over the hero */
                 flex-wrap: wrap; 
                 justify-content: center; 
                 gap: 1rem;
                 padding: 1rem;
             }
-            .schedule-row { flex-direction: column; gap: 0.5rem; }
-            .time-cell { font-size: 0.9rem; opacity: 0.8; }
+            .schedule-row {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem; /* Adjust padding for mobile rows */
+            }
+            .time-cell {
+                flex: none; /* Remove fixed flex basis */
+                width: 100%; /* Make it take full width when stacked */
+                margin-bottom: 0.5rem; /* Add some space below time */
+                text-align: center; /* Center time for better appearance */
+            }
+            .activity-cell {
+                text-align: center; /* Center activity for better appearance */
+            }
             section { padding: 4rem 5%; }
             .logo-box { min-height: 45px; padding: 5px 10px; }
             .logo-img { max-height: 30px; }
@@ -413,22 +426,15 @@
 
     <!-- Top Nav: Logos with actual images from public folder -->
     <nav class="top-logo-bar">
-        <!-- Left -->
         <div class="logo-box">
             <img src="public/ai-impact-logo.png" alt="AI Impact Summit" class="logo-img">
         </div>
-        
-        <!-- Center Group -->
-        <div style="display: flex; gap: 2rem;">
-            <div class="logo-box">
-                <img src="public/mnnit.png" alt="MNNIT" class="logo-img">
-            </div>
-            <div class="logo-box">
-                <img src="public/satyamev.svg" alt="Govt of India" class="logo-img">
-            </div>
+        <div class="logo-box">
+            <img src="public/mnnit.png" alt="MNNIT" class="logo-img">
         </div>
-        
-        <!-- Right -->
+        <div class="logo-box">
+            <img src="public/satyamev.svg" alt="Govt of India" class="logo-img">
+        </div>
         <div class="logo-box">
             <img src="public/digitial_india.svg" alt="IT Ministry" class="logo-img">
         </div>

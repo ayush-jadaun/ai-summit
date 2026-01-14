@@ -80,32 +80,30 @@
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            backdrop-filter: blur(5px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .logo-box {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
             padding: 8px 16px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            font-family: 'Orbitron', sans-serif;
-            border-radius: 4px;
-            color: #fff;
+            border-radius: 8px;
             transition: 0.3s;
-            text-align: center;
-            letter-spacing: 1px;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 45px;
+            min-height: 55px;
+            background: rgba(255, 255, 255, 0.95); /* White background behind logos */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .logo-box:hover {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
-            color: var(--primary-color);
+            transform: scale(1.05);
+            background: #fff;
+            box-shadow: 0 0 20px var(--primary-color);
+        }
+
+        .logo-img {
+            max-height: 45px;
+            width: auto;
+            object-fit: contain;
         }
 
         /* --- HERO SECTION --- */
@@ -398,10 +396,13 @@
                 flex-wrap: wrap; 
                 justify-content: center; 
                 gap: 1rem;
+                padding: 1rem;
             }
             .schedule-row { flex-direction: column; gap: 0.5rem; }
             .time-cell { font-size: 0.9rem; opacity: 0.8; }
             section { padding: 4rem 5%; }
+            .logo-box { min-height: 45px; padding: 5px 10px; }
+            .logo-img { max-height: 30px; }
         }
     </style>
 </head>
@@ -410,19 +411,27 @@
     <!-- Particle Canvas -->
     <canvas id="bg-canvas"></canvas>
 
-    <!-- Top Nav: Logos Restored to Original Layout -->
+    <!-- Top Nav: Logos with actual images from public folder -->
     <nav class="top-logo-bar">
         <!-- Left -->
-        <div class="logo-box">AI SUMMIT</div>
+        <div class="logo-box">
+            <img src="public/ai-impact-logo.png" alt="AI Impact Summit" class="logo-img">
+        </div>
         
         <!-- Center Group -->
         <div style="display: flex; gap: 2rem;">
-            <div class="logo-box">MNNIT</div>
-            <div class="logo-box">GOVT INDIA</div>
+            <div class="logo-box">
+                <img src="public/mnnit.png" alt="MNNIT" class="logo-img">
+            </div>
+            <div class="logo-box">
+                <img src="public/satyamev.svg" alt="Govt of India" class="logo-img">
+            </div>
         </div>
         
         <!-- Right -->
-        <div class="logo-box">IT MINISTRY</div>
+        <div class="logo-box">
+            <img src="public/digitial_india.svg" alt="IT Ministry" class="logo-img">
+        </div>
     </nav>
 
     <!-- Hero -->

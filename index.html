@@ -349,19 +349,98 @@
 
         /* --- FOOTER --- */
         footer {
-            background: #000;
-            padding: 4rem 10%;
-            text-align: center;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, #000 100%);
+            padding: 3rem 10%;
             border-top: 1px solid var(--glass-border);
             position: relative;
             z-index: 2;
         }
 
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: stretch;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 2rem;
+        }
+
         .footer-logo {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .footer-section {
+            border-left: 2px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .footer-section p a {
+            color: var(--primary-color);
+            transition: 0.3s;
+        }
+
+        .footer-section p a:hover {
+            text-decoration: underline;
             color: #fff;
-            margin-bottom: 1rem;
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: stretch;
+            justify-content: flex-end;
+            min-height: 300px;
+        }
+
+        #footer-map {
+            width: 100%;
+            height: 350px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 40px rgba(0, 242, 255, 0.1);
+        }
+
+        .footer-bottom {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 1rem;
+            color: #555;
+            font-size: 0.8rem;
         }
 
         .inst-grid {
@@ -369,23 +448,23 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 1rem;
-            margin: 2rem 0;
+            margin: 1rem 0 0 0;
         }
 
         .inst-chip {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 8px 20px;
+            padding: 6px 15px;
             border-radius: 50px;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             transition: 0.3s;
             color: var(--text-dim);
         }
 
         .inst-chip:hover {
-            border-color: var(--accent);
+            border-color: var(--primary-color);
             color: #fff;
-            background: rgba(124, 58, 237, 0.1);
+            background: rgba(0, 242, 255, 0.1);
         }
 
         /* --- RESPONSIVE --- */
@@ -416,6 +495,19 @@
             section { padding: 4rem 5%; }
             .logo-box { min-height: 45px; padding: 5px 10px; }
             .logo-img { max-height: 30px; }
+            
+            /* Footer responsive */
+            footer { padding: 2rem 5%; }
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .footer-right {
+                min-height: 250px;
+            }
+            #footer-map {
+                height: 250px;
+            }
         }
     </style>
 </head>
@@ -586,22 +678,44 @@
     </section>
 
     <footer>
-        <div class="footer-logo">hAIVB-2026</div>
-        <p>Motilal Nehru National Institute of Technology Allahabad, Prayagraj-211004</p>
-        
-        <div class="inst-grid">
-            <span class="inst-chip">MNNIT</span>
-            <span class="inst-chip">Allahabad University</span>
-            <span class="inst-chip">United University</span>
-            <span class="inst-chip">UIT/UCER</span>
-            <span class="inst-chip">SIET</span>
-            <span class="inst-chip">BBS</span>
-            <span class="inst-chip">IERT</span>
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="footer-logo">hAIVB-2026</div>
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h4>About Event</h4>
+                        <p>Harnessing AI for Inclusive Growth - A pre-summit event exploring AI competency, digital empowerment, and ethical frameworks for Viksit Bharat 2047.</p>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>About MNNIT</h4>
+                        <p>Motilal Nehru National Institute of Technology (MNNIT) Allahabad, one of India's premier engineering institutions located in Prayagraj.</p>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Website</h4>
+                        <p><a href="https://mnnit.ac.in" target="_blank">mnnit.ac.in</a></p>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Location</h4>
+                        <p>MNNIT Allahabad, Prayagraj-211004, Uttar Pradesh, India</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-right">
+                <iframe id="footer-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3537.5147843892647!2d81.84175!3d25.4358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398519b47c9e09ad%3A0x4cc88f3f3d3f3d3f!2sComputer%20Science%20Department%2C%20MNNIT%20Allahabad!5e0!3m2!1sen!2sin!4v1705425234567" width="100%" height="100%" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 hAIVB Summit Team. All Rights Reserved.</p>
+            </div>
         </div>
-
-        <p style="color: #555; font-size: 0.8rem; margin-top: 2rem;">&copy; 2026 hAIVB Summit Team. All Rights Reserved.</p>
     </footer>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script>
         // --- PARTICLE NETWORK ANIMATION ---
         const canvas = document.getElementById('bg-canvas');
@@ -678,8 +792,7 @@
 
         initParticles();
         animate();
-
-        // --- SCROLL REVEAL ---
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
